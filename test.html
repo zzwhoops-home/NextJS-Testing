@@ -1,0 +1,42 @@
+<html>
+    <body>
+        <div id="test_app"></div>
+
+        <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            const app = document.getElementById("test_app");
+            
+            function Header({ title, italic }) {
+                return <h1><u>{italic ? <em>{title}</em> : title}</u></h1>;
+            }
+            function Steps({ toDisplay }) {
+                const steps = ["Register for a Strava account", "Join the Princeton XC/TF Summer Training Club", "View your club on this website!"]
+                return (
+                    <ul>
+                        {steps.map((step=value, index=index) => (
+                            <React.Fragment>
+                                <li key={index}>{`${index + 1}. ${step}`}</li>
+                                {/*<li key={index * 2}>{`${index + 1 * 2} Hi lol`}</li>*/}
+                            </React.Fragment>
+                        ))}
+                    </ul>
+                )
+            }
+            
+            function HomePage() {
+                return (
+                    <div>
+                        <Header title="Strava Summer Dashboard" italic={true} />
+                        <Header title="Welcome!" />
+                        <Steps toDisplay={3} />
+                    </div>
+                )
+            }
+
+            ReactDOM.render(<HomePage />, app);
+        </script>
+    </body>
+</html>
