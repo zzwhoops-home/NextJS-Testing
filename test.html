@@ -24,10 +24,10 @@
                 return (
                     <ul style={{listStyleType: "none"}}>
                         {steps.map((step=value, index=index) => (
-                            <React.Fragment>
+                            <>
                                 <ListItem key={step.toString()} value={`(${index + 1}). ${step}`} />
                                 {/*<li key={index * 2}>{`${index + 1 * 2} Hi lol`}</li>*/}
-                            </React.Fragment>
+                            </>
                         ))}
                     </ul>
                 )
@@ -44,7 +44,30 @@
                 )
             }
             
+            function Counter() {
+                const [count, setCount] = React.useState(0);
+                
+                const increment = () => setCount(count + 1)
+                const decrement = () => setCount(count - 1)
+
+                return (
+                    <div>
+                        Count: <strong>{count}</strong>
+                        <div>
+                            <div style={{display: "inline-block"}}><button onClick={increment}>+</button></div>
+                            <div style={{display: "inline-block"}}><button onClick={decrement}>-</button></div>
+                        </div>
+                    </div>
+                )
+                
+            }
+
             function HomePage() {
+                const [likes, setLikes] = React.useState(0);
+                
+                function incrementCount() {
+                    setLikes(likes + 1);
+                }
                 return (
                     <div>
                         <Header title="Strava Summer Dashboard" italic={true} />
@@ -52,6 +75,10 @@
                         <Steps toDisplay={3} />
                         <Header title="So why sign up?" />
                         <Purpose />
+
+                        <Counter />
+
+                        <button onClick={incrementCount}>Like <strong>({likes})</strong></button>
                     </div>
                 )
             }
