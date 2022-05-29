@@ -1,5 +1,4 @@
 import { useState } from 'react';
-const app = document.getElementById("test_app");
 
 function Header({ title, italic }) {
     return <h1><u>{italic ? <em>{title}</em> : title}</u></h1>;
@@ -54,12 +53,17 @@ function Counter() {
     
 }
 
-export default function HomePage() {
+function Like() {
     const [likes, setLikes] = useState(0);
     
-    function incrementCount() {
-        setLikes(likes + 1);
-    }
+    const incrementCount = () => setLikes(likes + 1);
+
+    return (
+        <button onClick={incrementCount}>Like <strong>({likes})</strong></button>
+    )
+}
+
+export default function HomePage() {
     return (
         <div>
             <Header title="Strava Summer Dashboard" italic={true} />
@@ -69,8 +73,8 @@ export default function HomePage() {
             <Purpose />
 
             <Counter />
+            <Like />
 
-            <button onClick={incrementCount}>Like <strong>({likes})</strong></button>
         </div>
     )
 }
