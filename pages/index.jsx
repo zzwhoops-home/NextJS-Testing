@@ -16,7 +16,7 @@ function Steps({ toDisplay }) {
         <ul style={{listStyleType: "none"}}>
             {steps.map((step=value, index=index) => (
                 <>
-                    <ListItem key={step.toString()} value={`(${index + 1}). ${step}`} />
+                    <ListItem key={index} value={`(${index + 1}). ${step}`} />
                     {/*<li key={index * 2}>{`${index + 1 * 2} Hi lol`}</li>*/}
                 </>
             ))}
@@ -29,7 +29,7 @@ function Purpose() {
     return (
         <ul style={{listStyleType: "none"}}>
             {reasons.map((reason=value, index=index) => (
-                <ListItem key={reason.toString()} value={`(${index + 1}). ${reason}`} />
+                <ListItem key={index} value={`(${index + 1}). ${reason}`} />
             ))}
         </ul>
     )
@@ -53,16 +53,6 @@ function Counter() {
     
 }
 
-function Like() {
-    const [likes, setLikes] = useState(0);
-    
-    const incrementCount = () => setLikes(likes + 1);
-
-    return (
-        <button onClick={incrementCount}>Like <strong>({likes})</strong></button>
-    )
-}
-
 export default function HomePage() {
     return (
         <div>
@@ -72,9 +62,7 @@ export default function HomePage() {
             <Header title="So why sign up?" />
             <Purpose />
 
-            <Counter />
-            <Like />
-
+            <Counter key={"yes"}/>
         </div>
     )
 }
