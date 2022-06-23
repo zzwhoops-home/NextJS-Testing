@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Header({ title, italic }) {
     return <h1><u>{italic ? <em>{title}</em> : title}</u></h1>;
@@ -45,8 +46,8 @@ export default function HomePage() {
             <Steps toDisplay={3} />
             <Header title="So why sign up?" />
             <Purpose />
-            <Link href="/database" passHref>
-                <Button></Button>
+            <Link href="/database">
+                <a>To Database</a>
             </Link>
 
         </div>
