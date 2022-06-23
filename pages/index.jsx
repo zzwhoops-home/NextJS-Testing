@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Link from 'next/link';
 
 function Header({ title, italic }) {
     return <h1><u>{italic ? <em>{title}</em> : title}</u></h1>;
@@ -35,23 +36,6 @@ function Purpose() {
     )
 }
 
-function Counter() {
-    const [count, setCount] = useState(0);
-    
-    const increment = () => setCount(count + 1)
-    const decrement = () => setCount(count - 1)
-
-    return (
-        <div>
-            Count: <strong>{count}</strong>
-            <div>
-                <div style={{display: "inline-block"}}><button onClick={increment}>+</button></div>
-                <div style={{display: "inline-block"}}><button onClick={decrement}>-</button></div>
-            </div>
-        </div>
-    )
-    
-}
 
 export default function HomePage() {
     return (
@@ -61,8 +45,10 @@ export default function HomePage() {
             <Steps toDisplay={3} />
             <Header title="So why sign up?" />
             <Purpose />
+            <Link href="/database" passHref>
+                <Button></Button>
+            </Link>
 
-            <Counter key={"yes"}/>
         </div>
     )
 }
